@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+
   <style>
     :root {
       --bg-1: #0b0b0b;
@@ -45,7 +46,7 @@
       filter: brightness(1.2) drop-shadow(0 4px 10px rgba(192,192,192,0.7));
     }
 
-    /* Cards con relleno plateado suave pero completo */
+    /* Cards */
     .card-item {
       background: rgba(255, 255, 255, 0.015);
       border-radius: 0.75rem;
@@ -103,7 +104,6 @@
       position: relative;
       transition: color 0.25s ease, background 0.25s ease, transform 0.18s ease;
       user-select: none;
-      margin-top: 8px;
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -128,7 +128,7 @@
       left: 9px;
     }
 
-    /* Botón Discord con relleno animado */
+    /* Botón Discord */
     .discord-btn {
       position: relative;
       overflow: hidden;
@@ -155,14 +155,31 @@
     .text-muted { color: var(--muted); }
     .text-accent { color: var(--accent); }
     .font-serif { font-family: 'Playfair Display', serif; }
-    .card-item:focus {
-      outline: 3px solid rgba(192,192,192,0.14);
-      outline-offset: 4px;
-    }
-    .card-item:focus .card-cta { box-shadow: 0 0 0 3px rgba(192,192,192,0.06) inset; }
+
+    /* Centramos contenido de las tarjetas */
     .card-body {
       padding: 1rem;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Animaciones */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .animate-fadeUp {
+      animation: fadeUp 0.8s ease-out both;
+    }
+    .animate-fadeIn {
+      animation: fadeIn 0.8s ease-out both;
     }
   </style>
 </head>
@@ -170,8 +187,8 @@
   <canvas id="particle-canvas"></canvas>
 
   <div class="site relative z-10 max-w-4xl mx-auto my-12 p-7 px-4">
-    <main class="glass-card p-6 md:p-8">
-      <header class="flex items-center gap-6 mb-6">
+    <main class="glass-card p-6 md:p-8 animate-fadeUp">
+      <header class="flex items-center gap-6 mb-6 animate-fadeIn" style="animation-delay: 0.1s;">
         <div id="logo-wrap" class="w-16 h-16 rounded-full overflow-hidden shadow-sm flex-shrink-0">
           <img src="chicz.png" alt="Alice" class="w-full h-full object-cover" />
         </div>
@@ -186,13 +203,13 @@
         </div>
       </header>
 
-      <div class="my-6 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+      <div class="my-6 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent animate-fadeIn" style="animation-delay: 0.3s;"></div>
 
-      <section>
+      <section class="animate-fadeUp" style="animation-delay: 0.4s;">
         <h2 class="text-lg font-semibold text-accent font-serif mb-4">¿A dónde quieres ir?</h2>
         <ul class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <li>
-            <a class="card-item" href="https://aliceexploits.github.io/metododedescarga/" download target="_blank" rel="noopener noreferrer">
+          <li class="animate-fadeUp" style="animation-delay: 0.5s;">
+            <a class="card-item" href="https://aliceexploits.github.io/metododedescarga/-" download target="_blank" rel="noopener noreferrer">
               <div class="img-lead">
                 <img src="ejec.jpg" alt="Ejecutores/Exploits">
               </div>
@@ -203,13 +220,13 @@
                   <i class="fa-brands fa-apple text-gray-300"></i> •
                   <i class="fa-brands fa-windows text-blue-400"></i>
                 </div>
-                <span class="card-cta" role="button" aria-hidden="true">Ir <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                <span class="card-cta" role="button">Ir <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
               </div>
             </a>
           </li>
 
-          <li>
-            <a class="card-item" href="" download target="_blank" rel="noopener noreferrer">
+          <li class="animate-fadeUp" style="animation-delay: 0.7s;">
+            <a class="card-item" href="https://aliceexploits.github.io/Inicio/" download target="_blank" rel="noopener noreferrer">
               <div class="img-lead">
                 <img src="image.png" alt="Scripts">
               </div>
@@ -220,7 +237,7 @@
                   <i class="fa-brands fa-apple text-gray-300"></i> •
                   <i class="fa-brands fa-windows text-blue-400"></i>
                 </div>
-                <span class="card-cta" role="button" aria-hidden="true">Proximamente... <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                <span class="card-cta" role="button">Próximamente... <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
               </div>
             </a>
           </li>
